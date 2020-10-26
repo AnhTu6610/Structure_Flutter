@@ -1,11 +1,4 @@
-enum NetworkException {
-  NoInternet,
-  NoServiceFound,
-  InvalidFormat,
-  Unknown,
-  TokenDie,
-  NO
-}
+enum NetworkException { NoInternet, NoServiceFound, InvalidFormat, Timeout, Unknown, TokenDie, NO }
 
 class NetworkResponse<T> {
   bool isSuccess;
