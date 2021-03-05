@@ -1,150 +1,115 @@
-import 'package:structure_example/resource/colors_data.dart';
-import 'package:structure_example/resource/dimen.dart';
-import 'package:structure_example/resource/fonts_name.dart';
-import 'package:structure_example/views/login/login_screen.dart';
-import 'package:structure_example/views/splash/splash_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
+import 'package:structure_example/app_localizations.dart';
+import 'package:structure_example/bloc/authen/bloc_profile.dart';
+import 'package:structure_example/bloc/chat/bloc_chat.dart';
+import 'package:structure_example/bloc/shopping/bloc_order.dart';
+import 'package:structure_example/data_source/local_data/preference_name.dart';
+import 'package:structure_example/data_source/local_data/preference_provider.dart';
+import 'package:structure_example/generate_route.dart';
+import 'package:structure_example/resource/theme_material_app.dart';
 
-void main() async {
+import 'package:structure_example/views/splash/splash_screen.dart';
+
+main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-    systemNavigationBarIconBrightness: Brightness.dark,
-  ));
-  runApp(MyApp());
+
+  runApp(
+    MultiProvider(
+      child: MyApp(),
+      providers: <SingleChildWidget>[
+        ChangeNotifierProvider<BlocProfile>(create: (_) => BlocProfile()),
+        ChangeNotifierProvider<BlocOrder>(create: (_) => BlocOrder()),
+        ChangeNotifierProvider<BlocChat>(create: (_) => BlocChat()),
+      ],
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  static final navigatorKey = GlobalKey<NavigatorState>();
+class StateManager {
+  static final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+  static int indexPageHandbook = 0;
+}
+
+class MyApp extends StatefulWidget {
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(newLocale);
+  }
+
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  GenerateRoute _generateRoute = new GenerateRoute();
+  ThemeMaterialApp _themeMaterialApp = new ThemeMaterialApp();
+  Locale _locale;
+  setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    PreferenceProvider.getString(PreferenceNames.LANGUAGE_CODE, def: "vi").then((value) {
+      setState(() {
+        this._locale = Locale(value);
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+  }
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
-      navigatorKey: MyApp.navigatorKey,
-      title: 'Structure example',
+      title: "structure example",
+      navigatorKey: StateManager.navigatorKey,
+      debugShowCheckedModeBanner: true,
+      onGenerateRoute: (setting) => _generateRoute.checkRoute(setting),
       home: SplashScreen(),
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case "/login":
-            return PageTransition(
-              child: LoginScreen(),
-              type: PageTransitionType.rightToLeft,
-              settings: RouteSettings(name: "/register"),
-            );
-
-          case "/splash":
-            return PageTransition(
-              child: SplashScreen(),
-              type: PageTransitionType.rightToLeft,
-              settings: RouteSettings(name: "/splash"),
-            );
-            break;
-
-          default:
-            return PageTransition(
-              child: SplashScreen(),
-              type: PageTransitionType.rightToLeft,
-              settings: RouteSettings(name: "/splash"),
-            );
+      theme: _themeMaterialApp.themeData,
+      locale: _locale,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode) {
+            return supportedLocale;
+          }
         }
+        return supportedLocales.first;
       },
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        primarySwatch: Colors.blue,
-        fontFamily: FontsName.nunito_Regular,
-        dialogTheme: DialogTheme(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-        dividerColor: ColorsData.grey_1,
-        textTheme: TextTheme(
-          headline4: TextStyle(
-            color: ColorsData.green_1,
-            fontFamily: FontsName.nunito_Bold,
-          ),
-          headline5: TextStyle(
-            color: ColorsData.green_1,
-            fontFamily: FontsName.nunito_Bold,
-          ),
-          bodyText1: TextStyle(
-            color: ColorsData.grey_1,
-            fontFamily: FontsName.nunito_Regular,
-          ),
-        ),
-        snackBarTheme: SnackBarThemeData(
-          backgroundColor: ColorsData.blue_1,
-        ),
-        dialogBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(),
-        primaryTextTheme: TextTheme(
-          button: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: ColorsData.green_1,
-          unselectedItemColor: ColorsData.grey_1,
-          selectedIconTheme: IconThemeData(
-            color: ColorsData.green_1,
-          ),
-          unselectedIconTheme: IconThemeData(
-            color: ColorsData.grey_1,
-          ),
-          selectedLabelStyle: TextStyle(
-            fontFamily: FontsName.nunito_Bold,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontFamily: FontsName.nunito_Bold,
-          ),
-        ),
-        buttonTheme: ButtonThemeData(
-          buttonColor: ColorsData.green_1,
-          textTheme: ButtonTextTheme.normal,
-          colorScheme: ColorScheme.dark(),
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 10),
-        ),
-        backgroundColor: ColorsData.background,
-        brightness: Brightness.light,
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: ColorsData.fillInput,
-          isDense: false,
-          labelStyle: TextStyle(
-            color: ColorsData.lableInput,
-          ),
-          prefixStyle: TextStyle(color: ColorsData.iconInput),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimen.borderInput),
-            borderSide: BorderSide(color: ColorsData.boderInput),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimen.borderInput),
-            borderSide: BorderSide(color: ColorsData.boderInput),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimen.borderInput),
-            borderSide: BorderSide(color: ColorsData.green_1),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimen.borderInput),
-            borderSide: BorderSide(color: Colors.red),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimen.borderInput),
-            borderSide: BorderSide(color: Colors.red),
-          ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-        ),
-      ),
+      supportedLocales: [
+        const Locale('vi', 'VN'),
+        const Locale('en', 'US'),
+      ],
     );
   }
 }

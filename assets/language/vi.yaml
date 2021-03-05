@@ -1,0 +1,117 @@
+hello: Xin chào
+onHome: Về trang chủ
+shop: Cửa hàng
+news: Tin tức
+cate: Danh mục
+home: Trang chủ
+product: Sản phẩm
+handbook: Cẩm nang
+voucher: Voucher
+order: Đơn hàng
+listorder: Danh Sách Đơn Hàng
+listvoucher: Danh Sách Khuyến Mãi
+filterorders: Lọc đơn hàng
+joined: Đã đăng kí
+join: Đăng ký
+entercode: Nhập mã ưu đãi
+canceljoin: Hủy Đăng ký
+all: Tất cả
+copy: Sao chép
+another: Khác
+logout: Đăng xuất
+login: Đăng nhập
+register: Đăng ký
+pass: Mật khẩu
+changePass: Đổi mật khẩu
+forgotPass: Quên mật khẩu
+newPass: Mật khẩu mới
+oldPass: Mật khẩu mới
+enterPass: Nhập mật khẩu
+enterThePass: Nhập lại mật khẩu
+passIncorrect: Mật khẩu không khớp!
+passChangeSuccess: Đổi mật khẩu thành công
+setupNewPass: Thiết lập mật khẩu mới
+search: Bạn muốn tìm gì ...
+searchNotFound: Không tìm thấy sản phẩm!
+highlights: Nổi bật
+synthetic: Tổng hợp
+posts: Bài viết
+more: Xem tất cả
+intro: Giới thiệu về 
+event: Sự kiện
+status: Trạng thái
+time: Thời gian
+cancelorder: Hủy đơn hàng
+tilter: Lọc sự kiện
+coming: Sắp diễn ra
+ongoing: Đang diễn ra
+happened: Đã diễn ra
+contact: Liên hệ tư vấn
+cart: Giỏ hàng
+addToCart: Thêm vào giỏ hàng
+notiATCBefor: Đã thêm
+notiATCAppter:  vào giỏ hàng
+provisional:  Tạm tính
+vat:  VAT (10%)
+total:  Tổng tiền
+orderValue:  Giá trị đơn hàng
+deliveryBar: Thông tin giao hàng
+contactTitle: Liên hệ
+contactName: Tên liên hệ
+contactNameHint: Tên liên hệ ngân hàng
+phone: Số điện thoại
+addressTitle: Địa chỉ
+province: Tỉnh / Thành phố
+district: Quận / Huyện
+ward: Phường / Xã
+address: Địa chỉ
+note: Ghi chú đơn hàng
+noteHint: Nhập vào ghi chú đơn hàng
+selection: Lựa chọn
+confirm: Xác nhận đơn hàng
+notification: Thông báo
+contactConsultant: Liên hệ tư vấn
+chatWithAdmin: Chat với admin
+amount: Số lượng
+voucherempty: Chưa có voucher nào
+orderempty: Chưa có đơn hàng nào
+contactHotline: Liên hệ hotline
+account: Tài khoản
+name: Tên bạn
+loadmore: Thả ra để tải thêm
+clickreload: Thất bại! Bấm vào để tải lại
+gender: Giới tính
+unknown: Không xác định
+male: Nam
+female: Nữ
+updateInformation: Cập nhật thông tin
+cancel: Hủy
+apply: Áp dụng
+save: Lưu
+continue: Tiếp tục
+or: Hoặc
+notAccount: Nếu bạn chưa có tài khoản.
+hasAccount: Nếu bạn đã có tài khoản.
+registerNow: Đăng ký ngay
+loginNow: Đăng nhập ngay
+signinFB: Đăng nhập bằng Facebook
+signinGG: Đăng nhập bằng Google
+otpConfirm: Xác nhận OTP
+notiOtp: Nhập vào mã OTP vừa được gửi qua số điện thoại
+toSend: Gửi
+productNotFound: Không tìm thấy sản phẩm!
+noProducts: Danh mục không có sản phẩm
+clickToReload: Thất bại! Bấm vào để tải lại
+downMoreReload: Thả ra để tải thêm
+relatedProducts: Sảm phẩm tương tự
+contactInfo: Thông Tin Liên Hệ
+pay: Thanh toán
+empty: trống
+pleaseEnterName: Vui lòng điền tên người nhận
+cartEmpty: Giỏ hàng trống
+enterCoupon: Nhập mã ưu đãi...
+reject: Đã hủy
+success: Thành công
+pending: Chờ xử lý
+language: Ngôn ngữ
+discount: Giảm giá

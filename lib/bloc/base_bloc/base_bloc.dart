@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'package:structure_example/data_source/network_data/network_response.dart';
-import 'package:structure_example/data_source/network_data/user_repository.dart';
 import 'package:structure_example/main.dart';
-import 'package:structure_example/resource/colors_data.dart';
+import 'package:structure_example/utils/log_debug.dart';
 import 'package:structure_example/widgets/common_dialog.dart';
 
 abstract class BaseBloc {
-  UserRepository userRepository = new UserRepository();
-  StreamController<bool> _loaddingController = StreamController<bool>();
+  StreamController<bool> _loaddingController = StreamController<bool>.broadcast();
   Stream<bool> get loaddingStream => _loaddingController.stream;
   Sink<bool> get loaddingSink => _loaddingController.sink;
 
@@ -23,50 +20,19 @@ abstract class BaseBloc {
     _loaddingController.close();
   }
 
-  void showError(String textError) {
-    loaddingSink.add(false);
-
-    showOkDialog(MyApp.navigatorKey.currentContext, textError, () {
-      MyApp.navigatorKey.currentState.pop();
-    }, true, ColorsData.blue_1, "OK");
+  String _checkException(dynamic exception) {
+    if (exception == null) return null;
+    log(exception.runtimeType, "Type Exception");
+    log(exception.toString(), "Value Exception");
+    if (exception is FormatException) return "Lỗi định dạng dữ liệu";
+    return null;
   }
 
-  void showErrorNetworkAction(NetworkException networkException,
-      [Function ontapOk]) {
-    switch (networkException) {
-      case NetworkException.NoInternet:
-        _dialogError("Không có internet", ontapOk);
-        break;
-      case NetworkException.NoServiceFound:
-        _dialogError("Không tìm thấy dịch vụ", ontapOk);
-        break;
-      case NetworkException.InvalidFormat:
-        _dialogError("Định dạng không hợp lệ", ontapOk);
-        break;
-      case NetworkException.Unknown:
-        _dialogError("Lỗi không xác định", ontapOk);
-        break;
-      case NetworkException.TokenDie:
-        _dialogError("Token hết hạn", ontapOk);
-        break;
-      default:
-        _dialogError(networkException.toString(), ontapOk);
-    }
+  /// nếu exception null thì sử dụng textError
+  Future showError(String textError, {dynamic exception, Function ontapOk}) async {
     loaddingSink.add(false);
-  }
-
-  void showErrorAction(String textError, Function ontapOk) {
-    loaddingSink.add(false);
-
-    showOkDialog(MyApp.navigatorKey.currentContext, textError, ontapOk, true,
-        ColorsData.blue_1, "OK");
-  }
-
-  //---
-  _dialogError(String textError, Function ontapOk) {
-    showOkDialog(MyApp.navigatorKey.currentContext, textError, () {
-      MyApp.navigatorKey.currentState.pop();
+    await showOkDialog(StateManager.navigatorKey.currentContext, _checkException(exception) ?? textError ?? "Lỗi không xác định", () {
       if (ontapOk != null) ontapOk();
-    }, true, ColorsData.blue_1, "OK");
+    });
   }
 }

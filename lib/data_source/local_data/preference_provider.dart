@@ -1,4 +1,4 @@
-import 'package:structure_example/data_source/local_data/share_preference_name.dart';
+import 'package:structure_example/data_source/local_data/preference_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceProvider {
@@ -34,12 +34,6 @@ class PreferenceProvider {
     await load();
     await _prefs.setBool(key, value);
     _memoryPrefs[key] = value;
-  }
-
-  static Future removeAll() async {
-    await load();
-    await _prefs.clear();
-    _memoryPrefs.clear();
   }
 
   static Future<String> getString(String key, {String def}) async {
@@ -108,12 +102,17 @@ class PreferenceProvider {
     return val;
   }
 
-  static Future<String> getToken() async =>
-      await getString(SharePrefNames.TOKEN);
-  static Future<String> getFCMToken() async =>
-      await getString(SharePrefNames.FCM_TOKEN);
-  static Future cleanAll() async {
-    _prefs.clear();
-    setBool(SharePrefNames.FIRST_INTRO, true);
+  static Future<String> getToken() async => await getString(PreferenceNames.TOKEN);
+  static Future<String> getFCMToken() async => await getString(PreferenceNames.FCM_TOKEN);
+
+  static Future removeAll() async {
+    await load();
+    await _prefs.clear();
+    _memoryPrefs.clear();
+  }
+
+  static Future remove(String key) async {
+    await load();
+    await _prefs.remove(key);
   }
 }

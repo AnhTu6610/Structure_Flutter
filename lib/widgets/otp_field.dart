@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:structure_example/resource/colors_data.dart';
 
 enum FieldStyle { underline, box }
 
 class OTPTextField extends StatefulWidget {
   /// Number of the OTP Fields
+  @required
   final int length;
 
   /// Total Width of the OTP Text Field
@@ -13,7 +15,7 @@ class OTPTextField extends StatefulWidget {
   final double fieldWidth;
 
   /// Manage the type of keyboard that shows up
-  TextInputType keyboardType;
+  final TextInputType keyboardType;
 
   /// The style to use for the text being edited.
   final TextStyle style;
@@ -76,8 +78,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
   @override
   void dispose() {
-    _textControllers
-        .forEach((TextEditingController controller) => controller.dispose());
+    _textControllers.forEach((TextEditingController controller) => controller.dispose());
     super.dispose();
   }
 
@@ -99,10 +100,21 @@ class _OTPTextFieldState extends State<OTPTextField> {
   /// * Requires Int position of the field
   Widget buildTextField(BuildContext context, int i) {
     if (_focusNodes[i] == null) _focusNodes[i] = new FocusNode();
-
-    if (_textControllers[i] == null)
-      _textControllers[i] = new TextEditingController();
-
+    if (_textControllers[i] == null) _textControllers[i] = new TextEditingController();
+    BorderRadius borderRadius;
+    if (i == 0)
+      borderRadius = BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10));
+    else if (i == widget.length - 1)
+      borderRadius = BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10));
+    else
+      borderRadius = BorderRadius.all(Radius.circular(0));
+    OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.grey[300],
+        width: 1,
+      ),
+      borderRadius: borderRadius,
+    );
     return Container(
       width: widget.fieldWidth,
       child: TextField(
@@ -117,12 +129,9 @@ class _OTPTextFieldState extends State<OTPTextField> {
           counterText: "",
           hintText: "o",
           hintStyle: TextStyle(color: Colors.white, fontSize: 15),
-          border:
-              UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-          enabledBorder:
-              UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.orange)),
+          border: widget.fieldStyle == FieldStyle.box ? outlineInputBorder : UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          enabledBorder: widget.fieldStyle == FieldStyle.box ? outlineInputBorder : UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          focusedBorder: widget.fieldStyle == FieldStyle.box ? outlineInputBorder : UnderlineInputBorder(borderSide: BorderSide(color: Colors.orange)),
         ),
         onChanged: (String str) {
           // Check if the current value at this position is empty
@@ -141,8 +150,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
           // Remove focus
           if (str.isNotEmpty) _focusNodes[i].unfocus();
           // Set focus to the next field if available
-          if (i + 1 != widget.length && str.isNotEmpty)
-            FocusScope.of(context).requestFocus(_focusNodes[i + 1]);
+          if (i + 1 != widget.length && str.isNotEmpty) FocusScope.of(context).requestFocus(_focusNodes[i + 1]);
 
           String currentPin = "";
           _pin.forEach((String value) {
@@ -151,9 +159,7 @@ class _OTPTextFieldState extends State<OTPTextField> {
 
           // if there are no null values that means otp is completed
           // Call the `onCompleted` callback function provided
-          if (!_pin.contains(null) &&
-              !_pin.contains('') &&
-              currentPin.length == widget.length) {
+          if (!_pin.contains(null) && !_pin.contains('') && currentPin.length == widget.length) {
             widget.onCompleted(currentPin);
           }
 

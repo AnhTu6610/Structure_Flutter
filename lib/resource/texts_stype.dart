@@ -1,67 +1,53 @@
+import 'package:flutter/material.dart';
 import 'package:structure_example/resource/colors_data.dart';
 import 'package:structure_example/resource/fonts_name.dart';
 import 'package:structure_example/resource/fonts_size.dart';
-import 'package:flutter/material.dart';
 
-class TextsStype {
-  static TextStyle textTitleAppBar = TextStyle(
-    color: Colors.white,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.medium_2,
+class TextsStyle {
+  static TextStyle titleAppBar = TextStyle(
+    color: ColorsData.appBarText,
+    fontFamily: FontsName.semiBold,
+    fontSize: FontsSize.appBar,
   );
-  static TextStyle textTitle = TextStyle(
-    color: ColorsData.green_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_4,
+  static TextStyle title = TextStyle(
+    color: ColorsData.textTitle,
+    fontFamily: FontsName.semiBold,
+    fontSize: FontsSize.title,
   );
-  static TextStyle whiteBoldSmall2 = TextStyle(
-    color: Colors.white,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_2,
+  static TextStyle subTitle = TextStyle(
+    color: ColorsData.textSubTitle,
+    fontFamily: FontsName.medium,
+    fontSize: FontsSize.subTitle,
   );
-  static TextStyle whiteBoldSmall4 = TextStyle(
-    color: Colors.white,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_4,
+  static TextStyle heading = TextStyle(
+    color: ColorsData.textHeading,
+    fontFamily: FontsName.medium,
+    fontSize: FontsSize.heading,
   );
-  static TextStyle green1BoldSmall1 = TextStyle(
-    color: ColorsData.green_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_1,
+  static TextStyle fadedText = TextStyle(
+    color: ColorsData.textFaded,
+    fontFamily: FontsName.medium,
+    fontSize: FontsSize.heading,
   );
-  static TextStyle green1BoldSmall2 = TextStyle(
-    color: ColorsData.green_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_2,
+  static TextStyle caption = TextStyle(
+    color: ColorsData.textCaption,
+    fontFamily: FontsName.light,
+    fontSize: FontsSize.caption,
+    fontStyle: FontStyle.italic,
   );
-  static TextStyle green1BoldSmall3 = TextStyle(
-    color: ColorsData.green_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_3,
+  static TextStyle lyrics = TextStyle(
+    color: ColorsData.textLyrics,
+    fontFamily: FontsName.regular,
+    fontSize: FontsSize.lyrics,
   );
-  static TextStyle green1BoldSmall4 = TextStyle(
-    color: ColorsData.green_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_4,
+  static TextStyle subject = TextStyle(
+    color: ColorsData.textSubject,
+    fontFamily: FontsName.medium,
+    fontSize: FontsSize.subject,
   );
-  static TextStyle blue1BoldSmall1 = TextStyle(
-    color: ColorsData.blue_1,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.small_1,
-  );
-  static TextStyle blue3BoldMedium1 = TextStyle(
-    color: ColorsData.blue_3,
-    fontFamily: FontsName.nunito_Bold,
-    fontSize: FontsSize.medium_1,
-  );
-  static TextStyle blue3RegularMedium1 = TextStyle(
-    color: ColorsData.blue_3,
-    fontFamily: FontsName.nunito_Regular,
-    fontSize: FontsSize.medium_1,
-  );
-  static TextStyle grey1RegularSmall1 = TextStyle(
-    color: ColorsData.grey_1,
-    fontFamily: FontsName.nunito_Regular,
-    fontSize: FontsSize.small_1,
+  static TextStyle contex = TextStyle(
+    color: ColorsData.textConten,
+    fontFamily: FontsName.regular,
+    fontSize: FontsSize.conten,
   );
 }

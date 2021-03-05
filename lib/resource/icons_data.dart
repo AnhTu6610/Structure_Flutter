@@ -1,28 +1,29 @@
 class IconsData {
-  static String menu = "assets/icons/menu.svg";
-  static String hidePassword = "assets/icons/hide-password.svg";
-  static String thermometer = "assets/icons/thermometer.svg";
-  static String hygrometer = "assets/icons/hygrometer.svg";
-  static String energy = "assets/icons/energy.svg";
-  static String rfidSensor = "assets/icons/rfid_sensor.svg";
-  static String onoff = "assets/icons/onoff.svg";
-  static String home = "assets/icons/home.svg";
-  static String micro = "assets/icons/micro.svg";
-  static String setting = "assets/icons/setting.svg";
-  static String polygon = "assets/icons/polygon.svg";
-
-  static String store = "assets/icons/store.svg";
-  static String auto = "assets/icons/auto.svg";
-  static String device = "assets/icons/device.svg";
-  static String logout = "assets/icons/logout.svg";
-  static String report = "assets/icons/report.svg";
-  static String zone = "assets/icons/zone.svg";
-
-  static String sun = "assets/icons/sun.svg";
-  static String wave = "assets/icons/wave.svg";
-  static String winter = "assets/icons/winter.svg";
-  static String clock = "assets/icons/clock.svg";
-
-  static String traffic = "assets/icons/traffic.svg";
-  static String power = "assets/icons/power.svg";
+  // authen \
+  static String ic_authen_hidepass = "assets/icons/hide-password.svg";
+  static String ic_authen_facebook = "assets/icons/facebook.svg";
+  static String ic_authen_google = "assets/icons/google.svg";
+  // home
+  static String ic_home_company = "assets/icons/company.svg";
+  static String ic_home_store = "assets/icons/store.svg";
+  static String ic_home_guide = "assets/icons/guide.svg";
+  static String ic_home_event = "assets/icons/event.svg";
+  static String ic_home_book = "assets/icons/book.svg";
+  static String ic_home_news = "assets/icons/news.svg";
+  //order
+  static String ic_item_order_footer = "assets/icons/item_order_footer.svg";
+  static String ic_another_shopping = "assets/icons/ic_another_shopping.svg";
+  static String ic_another_voucher = "assets/icons/ic_another_voucher.svg";
+  //notification
+  static String ic_notification_return = "assets/icons/return.svg";
+  //event
+  static String ic_event_sort = "assets/icons/return.svg";
+  //other
+  static String ic_other_contact = "assets/icons/contact.svg";
+  // bottom bar
+  static String ic_home = "assets/icons/ic_home.svg";
+  static String ic_handbook = "assets/icons/ic_handbook.svg";
+  static String ic_product = "assets/icons/ic_product.svg";
+  static String ic_connect = "assets/icons/ic_connect.svg";
+  static String ic_person = "assets/icons/ic_person.svg";
 }

@@ -1,0 +1,116 @@
+hello: Hello
+onHome: On the homepage
+shop: Shopping
+news: News
+cate: Category
+home: Home
+voucher: Voucher
+order: Order
+listorder: List of Orders
+listvoucher: List of Voucher
+copy: Copy
+amount: Amount
+voucherempty: Empty!
+orderempty: Empty!
+filterorders: Filter Orders
+loadmore: Drop to load more
+clickreload: Fail! Click to reload
+all: All
+product: Product
+handbook: Handbook
+another: Another
+logout: Logout
+login: Login
+register: Register
+pass: Paswork
+changePass: Change paswork
+forgotPass: Forget paswork
+newPass: New passwok
+oldPass: Old passwok
+enterPass: Enter password
+enterThePass: Enter the password
+passIncorrect: Password incorrect!
+passChangeSuccess: Password changed successfully
+setupNewPass: Set up a new password
+search: What do you want to search ...
+searchNotFound: Product not found!
+highlights: Highlights
+synthetic: Synthetic
+posts: Posts
+more: See all
+intro: Introduction to 
+event: Events
+tilter: Filter the event
+coming: Soon
+ongoing: Present
+happened: Done
+canceljoin: Cancel
+entercode: Enter coupon code
+contact: Contact consultant
+cart: Cart
+addToCart: Add to cart
+notiATCBefor: Basket added
+notiATCAppter: go to cart
+provisional: Provisional
+vat: VAT (10%)
+total: Total amount
+orderValue: The value of the order
+deliveryBar: Delivery information
+contactTitle: Contact
+contactName: Contact name
+contactNameHint: Bank contact name
+phone: Phone number
+addressTitle: Address
+province: Province / City
+district: District
+ward: Wards
+status: Status
+joined: Joined
+join: Join
+time: Time
+cancelorder: Cancel Order
+address: Address
+note: Order notes
+noteHint: Enter an order note 
+selection: Selection
+confirm: Confirm order
+notification: Notification
+contactConsultant: Contact Consultant
+chatWithAdmin: Chat With Admin
+contactHotline: Contact Hotline
+Account: Account
+name: Full name
+gender: Gender
+unknown: Unknown
+male: Male
+female: Female
+updateInformation: Update information
+cancel: Cancel
+apply: Apply
+save: Save
+continue: Continue
+or: Or
+notAccount: If you do not already have an account.
+hasAccount: If you do already have an account.
+registerNow: Register now
+loginNow: Login now
+signinFB: Sign in with Facebook
+signinGG: Sign in with Google
+otpConfirm: OTP confirmation
+notiOtp: Enter the OTP code sent by phone number
+toSend: To send
+productNotFound: Product not found!
+noProducts: The catalog has no products
+clickToReload: Failure! Click to reload
+downMoreReload: Release to download more
+relatedProducts: Related products
+contactInfo: Contact information
+pay: Pay
+pleaseEnterName: Please enter the name of the recipient
+cartEmpty: Cart empty
+enterCoupon: Enter coupon code ...
+reject: Reject
+success: Success
+pending: Pending
+language: Language
+discount: Discount
