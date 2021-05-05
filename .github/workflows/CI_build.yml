@@ -26,14 +26,14 @@ jobs:
       with:
           channel: 'stable'
     - run: flutter pub get
-#     - run: flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
+    - run: flutter build apk
 #     - run: flutter build appbundle --target-platform android-arm,android-arm64
-    - run: flutter build appbundle
-    - name: Upload APK
-      uses: actions/upload-artifact@master
-      with:
-        name: apk-build
-        path: build/app/outputs/apk/release
+#     - run: flutter build appbundle
+#     - name: Upload APK
+#       uses: actions/upload-artifact@master
+#       with:
+#         name: apk-build
+#         path: build/app/outputs/apk/release
 #   build:
 #     runs-on: ubuntu-latest
 
